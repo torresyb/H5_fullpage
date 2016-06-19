@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>h5页面</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/jquery.fullPage.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="wrap">
+        <div class="page section" id="page-1">
+            <div class="component log">
+                这是第1个页面
+            </div>
+            <div class="component slogan">
+                这是第1个页面
+            </div>
+        </div>
+        <div class="page section" id="page-2">
+            <div class="component log">
+                这是第2个页面
+            </div>
+            <div class="component desc">
+                这是第2个页面
+            </div>
+        </div>
+        <div class="page section" id="page-3">
+            <div class="component log">
+                这是第3个页面
+            </div>
+            <div class="component bar">
+                这是第3个页面
+            </div>
+        </div>
+    </div>
+    <script>
+    (function($){
+        $(function(){
+            $("#wrap").fullpage({
+                'sectionsColor': ['#254875', '#00FF00', '#695684'],
+                'onLeave': function(index, nextIndex, direction){
+                    $('#wrap').find('.page').eq(index-1).trigger('onLeave');
+                },
+                'afterLoad': function(index, nextIndex, direction){
+                    $('#wrap').find('.page').eq(nextIndex-1).trigger('onLoad');
+                }
+            });
+
+            // 监听离开当前页事件
+            $('.page').on('onLeave', function(event) {
+                event.preventDefault();
+                console.log($(this).attr('id'),'===>','onLeave');
+                $(this).find('.component').trigger('onLeave');
+            });
+
+            // 监听显示当前页事件
+            $('.page').on('onLoad', function(event) {
+                event.preventDefault();
+                console.log($(this).attr('id'),'===>','onLoad');
+                $(this).find('.component').trigger('onLoad');
+            });
+
+            // 监听组件动画事件
+            $('.component').on('onLoad', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                $(this).fadeIn();
+            });
+
+            $('.component').on('onLeave', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                $(this).fadeOut();
+            });
+
+        });
+    })(jQuery);
+    </script>
+</body>
+</html>

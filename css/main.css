@@ -1,0 +1,57 @@
+body{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: hidden;
+}
+/*loading页面*/
+#loading{
+    width: 60px;
+    height: 60px;
+    position: relative;
+    margin: -30px auto 0;
+    top:50%;
+}
+.loading_1,.loading_2{
+    width: 100%;
+    height: 100%;
+    background-color: #0062e0;
+    opacity: 0.6;
+    position: absolute;
+    top:0;
+    left: 0;
+    border-radius: 50%;
+}
+.loading_1{
+    -webkit-animation: at_loading 3s ease-in-out 0s infinite  both;
+    -o-animation: at_loading 3s ease-in-out 0s infinite  both;
+    animation: at_loading 3s ease-in-out 0s infinite  both;
+}
+.loading_2{
+    -webkit-animation: at_loading_2 3s ease-in-out 0s infinite  both;
+    -o-animation: at_loading_2 3s ease-in-out 0s infinite  both;
+    animation: at_loading_2 3s ease-in-out 0s infinite  both;
+}
+
+@-webkit-keyframes at_loading{
+    50%{
+        -webkit-transform: scale(1);
+    }
+    0%,100%{
+        -webkit-transform: scale(0);
+    }
+}
+
+@-webkit-keyframes at_loading_2{
+    0%,100%{
+        -webkit-transform: scale(1);
+    }
+    50%{
+        -webkit-transform: scale(0);
+    }
+}
+
+/*page页面*/
+.component{
+    display: none;
+}
