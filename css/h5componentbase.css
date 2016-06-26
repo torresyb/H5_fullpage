@@ -4,3 +4,10 @@
     background-size: 100%;
     background-repeat: no-repeat;
 }
+.clearfix:after{
+    clear: both;
+    content:'';
+    display: block;
+    height: 0;
+    visibility: hidden;
+}

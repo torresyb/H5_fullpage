@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>h5页面</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/h5componentbase.css">
+    <link rel="stylesheet" href="css/h5componentbasebar_v.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/jquery.fullPage.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+    body{
+        background-color: #000;
+    }
+    #wrap{
+        background-color: #fff;
+        width: 320px;
+        height: 540px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -270px;
+        margin-left: -160px;
+    }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        
+    </div>
+    <script src="js/h5componentbase.js" type="text/javascript"></script>
+    <script src="js/h5componentbasebar.js" type="text/javascript"></script>
+    <script src="js/h5componentbasebar_v.js" type="text/javascript"></script>
+    <script>
+    (function($){
+        $(function(){
+            var cfg = {
+                'type': 'bar_v',
+                'width': 530,
+                'height': 600,
+                'data': [
+                    ['js',0.4,'red'],
+                    ['html',0.2],
+                    ['css3',0.35],
+                    ['jquery',0.25],
+                    ['php',0.12],
+                    ['argularjs',0.5],
+                ],
+                'css': {
+                    'top':50,
+                    'opacity':0
+                },
+                'animateIn': {
+                    'opacity':1,
+                    'top':100
+                },
+                'animateOut':{
+                    'opacity':0,
+                    'top':50
+                },
+                'center': true
+            };
+            var h5 = new H5ComponentBar_v('myname',cfg);
+            $('#wrap').append(h5);
+
+            var isClick = false;
+            $('body').on('click', function(event) {
+                event.preventDefault();
+                isClick = !isClick;
+                $('.h5_component').trigger(isClick?'onLoad':'onLeave');
+            });
+            setTimeout(function(){
+                $("body").trigger('click');
+            }, 500);
+        });
+    })(jQuery);
+    </script>
+</body>
+</html>
