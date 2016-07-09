@@ -1,0 +1,28 @@
+/*雷达图*/
+.h5_component_radar{
+
+}
+.h5_component_radar canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.h5_component_radar .text{
+    position: absolute;
+    font-size: 12px;
+    text-align: center;
+    bottom: -20px;
+    height:20px;
+    line-height: 20px;
+    transform:scale(0.8);
+    -webkit-transition: all 1s 2s;
+    opacity:0;
+}
+.h5_component_radar_load .text{
+    opacity:1;
+}
+.h5_component_radar_leave .text{
+    opacity:0;
+}
